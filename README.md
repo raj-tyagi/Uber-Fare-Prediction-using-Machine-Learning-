@@ -1,98 +1,119 @@
-# Uber Fare Prediction using Machine Learning 🚖📊
+# 🚖 Uber Fare Prediction using Machine Learning
 
-This project focuses on predicting the fare amount of Uber rides in New York City using machine learning models. The goal is to build a regression model that estimates fares based on features such as pickup/drop-off locations, trip distance, and time-related factors.
+This project predicts the fare amount for Uber rides in New York City using various regression models. It includes data preprocessing, feature engineering, EDA, and model training using **Linear Regression**, **Random Forest**, and **XGBoost**.
+
+---
 
 ## 📌 Objective
-To develop and compare different machine learning models to accurately predict Uber ride fares using real-world data. This project demonstrates data preprocessing, feature engineering, EDA, and model evaluation.
+To develop a machine learning regression model that accurately estimates Uber fares based on trip details, including pickup and drop-off coordinates, passenger count, and datetime features.
 
 ---
 
 ## 📁 Dataset
-The dataset used is publicly available and includes:
-- Pickup and drop-off datetime
-- Pickup and drop-off coordinates (latitude, longitude)
-- Passenger count
-- Fare amount (target variable)
+The dataset is publicly available on Kaggle and contains:
+- `pickup_datetime`
+- `pickup_longitude`, `pickup_latitude`
+- `dropoff_longitude`, `dropoff_latitude`
+- `passenger_count`
+- `fare_amount` (target variable)
 
-> Dataset Source: [Kaggle - Uber Fare Prediction](https://www.kaggle.com/datasets/yasserh/uber-fare-prediction-data)
-
----
-
-## 🔧 Technologies Used
-- **Python**
-- **Pandas, NumPy** – Data Manipulation
-- **Matplotlib, Seaborn** – Data Visualization
-- **Scikit-learn** – ML Models & Evaluation
-- **XGBoost** – Gradient Boosted Trees
-- **Jupyter Notebook**
+> 📂 Source: [Kaggle - Uber Fare Prediction](https://www.kaggle.com/datasets/yasserh/uber-fare-prediction-data)
 
 ---
 
-## 🧹 Data Preprocessing
-- Removed null/missing values
-- Filtered out invalid geographic coordinates and outliers
-- Extracted features from datetime (hour, day, month)
-- Calculated haversine distance between pickup and drop-off points
+## 🛠️ Technologies Used
+- Python (Jupyter Notebook)
+- Pandas, NumPy
+- Matplotlib, Seaborn
+- Scikit-learn
+- XGBoost
+- Geopy (for distance calculation)
 
 ---
 
-## 📊 Exploratory Data Analysis
-- Analyzed distributions of fare amount, passenger count, and trip distance
-- Visualized pickup locations using scatter plots
-- Identified correlations between features
+## 📊 Data Preprocessing & Feature Engineering
+
+- **Handled missing/null values**
+- **Filtered outliers** in fare amounts, latitudes, longitudes, and passenger count
+- **Converted datetime** to separate features: hour, day, month, weekday
+- **Calculated Haversine distance** between pickup and drop-off locations
+- Final feature set includes:
+  - `passenger_count`
+  - `distance`
+  - `hour`, `day`, `month`, `weekday`
 
 ---
 
-## 🤖 Models Implemented
-| Model              | Description                                |
-|-------------------|--------------------------------------------|
-| Linear Regression | Baseline model                             |
-| Random Forest     | Ensemble tree-based model                  |
-| XGBoost           | Gradient boosting for improved accuracy    |
+## 📈 Exploratory Data Analysis (EDA)
+
+- Distribution plots of fare amount and passenger count
+- Correlation heatmap of numerical features
+- Visualizations for feature relationships
+
+---
+
+## 🤖 Machine Learning Models Used
+
+| Model              | Description                                 |
+|-------------------|---------------------------------------------|
+| Linear Regression | Baseline model                              |
+| Random Forest     | Tree-based ensemble learning                |
+| XGBoost           | Boosted decision tree algorithm for accuracy|
 
 ---
 
 ## ✅ Evaluation Metrics
+
 - **Root Mean Squared Error (RMSE)**
-- **R² Score (Coefficient of Determination)**
+- **R² Score**
 
-XGBoost performed best, with a significant improvement in prediction accuracy over baseline models.
-
----
-
-## 📌 Key Learnings
-- Real-world datasets require thorough preprocessing and cleaning
-- Feature engineering significantly impacts model performance
-- Gradient boosting models (XGBoost) outperform simpler regressors for this use case
+> 🏆 Best Performance:  
+> - **Model:** XGBoost  
+> - **RMSE:** ~4.12  
+> - **R² Score:** ~0.85
 
 ---
 
-## 📎 Results Snapshot
-- Best RMSE: *~3.95 USD*
-- Best R² Score: *~0.85* (XGBoost)
-- Strong correlation found between distance, time of day, and fare
+## 🧠 Key Insights
+- **Distance** and **time of day** have strong effects on fare amount
+- XGBoost significantly outperformed other models
+- Proper feature engineering (e.g., Haversine distance, time features) improved model performance
 
 ---
 
-## 🧠 Future Work
-- Incorporate weather or traffic data
-- Use geospatial clustering for region-based features
-- Deploy model with a Flask API for real-time predictions
-
----
-
-## 📂 Project Structure
+## 🧰 Project Structure
 ```
 
 Uber-Fare-Prediction/
-├── data/
-├── notebooks/
-├── src/
-├── visuals/
-├── README.md
-└── requirements.txt
+├── data/                        # Dataset CSV (optional)
+├── uber-fare-prediction.ipynb  # Jupyter notebook with code
+├── README.md                   # Project documentation
+├── requirements.txt            # Python dependencies
 
-```
+````
+
+---
+
+## 🚀 How to Run
+1. Clone the repository
+2. Install dependencies  
+   ```bash
+   pip install -r requirements.txt
+````
+
+3. Open the notebook
+
+   ```bash
+   jupyter notebook uber-fare-prediction.ipynb
+   ```
+
+---
+
+## 🔮 Future Improvements
+
+* Add live traffic and weather features
+* Create an interactive web app using Streamlit/Flask
+* Use hyperparameter tuning (GridSearchCV or Optuna)
 
 
 
