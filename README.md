@@ -17,7 +17,6 @@ The dataset is publicly available on Kaggle and contains:
 - `passenger_count`
 - `fare_amount` (target variable)
 
-> 📂 Source: [Kaggle - Uber Fare Prediction](https://www.kaggle.com/datasets/yasserh/uber-fare-prediction-data)
 
 ---
 
